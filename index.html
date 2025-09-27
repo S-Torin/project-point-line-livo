@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Point-Line LIVO Using Patch-Based Gradient Optimization for Degenerate Scenes">
+  <meta name="keywords" content="LiDAR-Inertial-Visual Odometry, Point Line Feature, Direct Visual Odometry">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Point-Line LIVO Using Patch-Based Gradient Optimization for Degenerate Scenes</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L6PYDPEBZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-L6PYDPEBZZ');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://S-Torin.github.io">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://S-Torin.github.io/liv-gsm">
+              LIV-GSM
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Point-Line LIVO Using Patch-Based Gradient
+              Optimization for Degenerate Scenes
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/S-Torin/" target="_blank">Tong Shi</a><sup>1,</sup>,</span>
+              <span class="author-block">Kun Qian<sup>1,#</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/Yixin-F" target="_blank">Yixin Fang</a><sup>1</sup>,</span>
+              <span class="author-block">Yun Zhang<sup>1</sup>,</span>
+              <span class="author-block">Hai Yu<sup>1</sup>,</span>
+            </div>
+            <div class="column is-full_width">
+              <h2 class="is-size-6"># Corresponding Author</h2>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>School of Automation, Southeast University,</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://ieeexplore.ieee.org/document/10688407"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://www.bilibili.com/video/BV1cAsYe7EUy/?spm_id_from=333.337.search-card.all.click&vd_source=a587155edf4c069832d58246dbeaa350"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <i class="fas fa-video"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/S-Torin/Point-line-LIVO"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark is-static"
+                    style="opacity: 0.5; cursor: not-allowed;" title="Coming Soon">
+                    <span class="icon">
+                      <i class="fas fa-cube"></i>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div class="column has-text-centered" style="margin-top: -5px;">
+              <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2%;">
+                <img src="./static/images/experiment1.png" alt="Overview Image"
+                  style="flex: 1; max-width: 45% ; height: auto; object-fit: contain;">
+                <img src="./static/images/experiment2.png" alt="Overview Image"
+                  style="flex: 1; max-width: 42%; height: auto; object-fit: contain;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="notification has-text-weight-bold mb-6" style="background: linear-gradient(135deg, #f5f9ff 0%, #e1edff 100%);
+                      border-left: 4px solid #002D72; font-size: 0.92rem;">
+            <div class="is-flex is-align-items-center">
+              <span class="icon is-large mr-3" style="color: #0072CE;">
+                <i class="fas fa-bolt"></i>
+              </span>
+              <div>
+                <strong style="color: #002D72;">TL;DR:</strong>
+                <span style="display: inline; white-space: normal; color: #333;">
+                  This work introduces <strong style="color: #002D72;">Point-Line LIVO</strong>,a LiDAR-visual-inertial
+                  Odometry employing both visual Point and Line Patches on the Gradient image for robust localization in
+                  LiDAR-degenerate scenes.
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Simultaneous localization and mapping based on 3-D light detection and ranging (LiDAR) tends to degenerate
+              in structural-less environments, leading to a distinct reduction in localization accuracy and mapping
+              precision. This article proposes a point-line LiDAR-visual-inertial odometry (PL-LIVO) based on the system
+              implementation of FAST-LIVO for robust localization in LiDAR-degenerate scenes. The key idea is
+              integrating both points and lines into the proposed direct visual odometry subsystem (PL-DVO). By
+              minimizing the patch-based gradient residuals for state optimization, PL-DVO provides additional
+              constraints complementary to LiDAR. Furthermore, a LiDAR map assisted visual features depth extraction
+              (LM-VDE) method is proposed to recover 3-D positions of visual features by mapping them onto the 3-D
+              planes of the LiDAR map. This method is independent of the single scan's density and notable for superior
+              generalization across various LiDAR sensors. Extensive experiments on both public datasets and our
+              datasets demonstrate that PL-LIVO ensures robust localization and outperforms other state-of-the-art
+              systems in LiDAR degenerate scenes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3" style="margin-top: -30px">Overview</h2>
+          <div class="column has-text-centered" style="margin-top: -5px;">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+              <img src="./static/images/overview1.png" alt="Overview Image"
+                style="flex: 1; max-width: 60%; height: auto; object-fit: contain;">
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p style="margin-top: 10px">Point-Line LIVO comprises a backbone LiDAR-inertial odometry (blue and gray
+              components) and a direct visual odometry subsystem PL-DVO (red component). Our proposed LM-VDE (green
+              component) method is employed to extract all visual features depth. The data of IMU, LiDAR, and camera are
+              tightly coupled at the observation level.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3" style="margin-top: -30px">Pipline</h2>
+          <div class="column has-text-centered" style="margin-top: -20px;">
+            <img src="./static/images/overview2.png" class="center">
+          </div>
+          <div class="content has-text-justified">
+            <p style="margin-top: 10px">Initially, the input data from LiDAR and camera are fed into the Preprocessing
+              module for data alignment and feature extraction, resulting in an aligned unit for the following steps.
+              Concurrently, the IMU data is gatheredfor state propagation. Then, the aligned unit is utilized to
+              construct observation residuals in the Data Association module. In detail, the point-to-plane residual is
+              calculated for each LiDAR scan point, while the patch-based gradient residual is computed for each visual
+              feature within the camera FoV. In particular, the lines patch pattern is shaped as a rectangle aligned
+              with the line direction. All residuals are weighted by different factors and subsequently employed to
+              update the state in an error-state Kalman filter framework. Furthermore, the Feature Generation module
+              recovers 3-D coordinates of all extracted 2-D visual features by our proposed LM-VDE method.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3" style="margin-top: -30px">Experiments on FAST-LIVO Datasets</h2>
+          <div class="column has-text-centered" style="margin-top: 5px;">
+            <img src="./static/images/LiDAR_Degenerate.png" class="center">
+          </div>
+          <div class="column has-text-centered" style="margin-top: -20px;">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2%;">
+              <img src="./static/images/hku1.png" alt="Overview Image"
+                style="flex: 1; max-width: 42% ; height: auto; object-fit: contain;">
+              <img src="./static/images/Visual_Challenge.png" alt="Overview Image"
+                style="flex: 1; max-width: 56%; height: auto; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3" style="margin-top: -30px">Experiments on FAST-LIVO2 Datasets</h2>
+          <div class="column has-text-centered" style="margin-top: 5px;">
+            <img src="./static/images/RetailStreet_0.png" alt="Overview Image"
+              style="flex: 1; max-width: 100% ; height: auto; object-fit: contain;">
+          </div>
+          <div class="column has-text-centered" style="margin-top: -20px;">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2%;">
+              <img src="./static/images/RetailStreet_1.png" alt="Overview Image"
+                style="flex: 1; max-width: 40% ; height: auto; object-fit: contain;">
+              <img src="./static/images/RetailStreet_2.png" alt="Overview Image"
+                style="flex: 1; max-width: 58%; height: auto; object-fit: contain;">
+            </div>
+          </div>
+          <div class="column has-text-centered" style="margin-top: 5px;">
+            <img src="./static/images/CBDBuilding03_0.png" class="center">
+          </div>
+          <div class="column has-text-centered" style="margin-top: -20px;">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2%;">
+              <img src="./static/images/CBDBuilding03_3.png" alt="Overview Image"
+                style="flex: 1; max-width: 47%; height: auto; object-fit: contain;">
+              <img src="./static/images/CBDBuilding03_2.png" alt="Overview Image"
+                style="flex: 1; max-width: 51% ; height: auto; object-fit: contain;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@ARTICLE{pl-livo,
+  author={Shi, Tong and Qian, Kun and Fang, Yixin and Zhang, Yun and Yu, Hai},
+  journal={IEEE Robotics and Automation Letters},
+  title={Point-Line LIVO Using Patch-Based Gradient Optimization for Degenerate Scenes},
+  year={2024},
+  volume={9},
+  number={11},
+  pages={9717-9724},
+  doi={10.1109/LRA.2024.3466088}}</code></pre>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This website template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+              We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this
+              template.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
