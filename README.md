@@ -1,6 +1,6 @@
 # Point-Line LIVO
 
-This is the project webpage for the [Point-Line LIVO website](https://S-Torin.github.io/point-line-livo).
+This is the project webpage for the [Point-Line LIVO website](https://S-Torin.github.io/project-point-line-livo).
 
 If you find Point-Line LIVO useful for your work please cite:
 ```
